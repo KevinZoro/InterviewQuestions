@@ -46,8 +46,8 @@ function Animal(){}
 Animal.prototype.species = 'animal';
 
 function Dog(name,color){
-	this.name = name;
-	this.color = color;
+  this.name = name;
+  this.color = color;
 };
 
 Dog.prototype = Animal.prototype;
@@ -72,12 +72,12 @@ console.log(lucky.species); // animal
 ##### 5.拷贝继承
 ```javascript
 function extend(Child,Parent){
-	var p = Parent.prototype;
-	var c = Child.prototype;
-	for(var i in p){
-		c[i] = p[i];
-	}
-	c.uber = p;//为子对象留有可以访问父对象的接口
+  var p = Parent.prototype;
+  var c = Child.prototype;
+  for(var i in p){
+    c[i] = p[i];
+  }
+  c.uber = p;//为子对象留有可以访问父对象的接口
 }
 
 function Dog(name,color){}
@@ -185,3 +185,27 @@ require("http").createServer(function(req, res){
 [缓存策略](http://imweb.io/topic/55c6f9bac222e3af6ce235b9)
 
 ***
+
+# Q5：TCP与UDP的区别？
+# A：
+1.TCP是面向链接的，虽然说网络的不安全不稳定特性决定了多少次握手都不能保证连接的可靠性，但TCP的三次握手在最低限度上(实际上也很大程度上保证了)保证了连接的可靠性;
+　　而UDP不是面向连接的，UDP传送数据前并不与对方建立连接，对接收到的数据也不发送确认信号，发送端不知道数据是否会正确接收，当然也不用重发，所以说UDP是无连接的、不可靠的一种数据传输协议。
+2.也正由于1所说的特点，使得UDP的开销更小数据传输速率更高，因为不必进行收发数据的确认，所以UDP的实时性更好。
+
+# Q6：为什么选择mocha这种测试框架？
+# ANSWER:
+- 与node完美结合，可以在node端和浏览器端测试
+- 可以使用不同的断言库(chai,should等)
+- 异步方法测试简单
+- 支持before,after等hook
+
+[mocha git](https://github.com/mochajs/mocha)
+[mocha测试](http://taobaofed.org/blog/2015/12/10/nodejs-unit-tests/)
+
+# Q7：TDD/BDD分别是什么？
+# ANSWER：
+##### TDD（测试驱动开发）
+![](http://images0.cnblogs.com/blog2015/620714/201506/201411169981023.png)
+即先写测试用例，再一一实现功能
+##### BDD（行为驱动开发）
+先写功能，再对功能进行测试，更贴近人类思维方式
