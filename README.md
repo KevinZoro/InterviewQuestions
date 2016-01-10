@@ -205,7 +205,52 @@ require("http").createServer(function(req, res){
 # Q7：TDD/BDD分别是什么？
 # ANSWER：
 ##### TDD（测试驱动开发）
-![](http://images0.cnblogs.com/blog2015/620714/201506/201411169981023.png)
+![](http://upload-images.jianshu.io/upload_images/189326-ae8a427cbc3bc6fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 即先写测试用例，再一一实现功能
 ##### BDD（行为驱动开发）
 先写功能，再对功能进行测试，更贴近人类思维方式
+
+# Q8：闭包
+# ANSWER：
+我理解的闭包就是**外部函数获取内部函数私有属性的一种方法**，简单的用下面的例子解释一下：
+```javascript
+function myHouse(){
+  var __myname = 'Kevin';
+  var getMyname = function(){
+      return __myname;
+  };
+  return getMyname;
+}
+
+var getName = myHouse();
+console.log(getName());//Kevin
+```
+即通过在myHouse()中返回getMyname函数，getMyname函数中返回私有变量__myname，从而获取私有变量，同时保护私有变量不会直接暴露给外部，以免改变私有变量值。
+
+# Q9：node.js跨域问题
+# ANSWER：
+```javascript
+var express = require('express');
+var app = express();//设置跨域访问
+app.all('*', function(req, res, next) { 
+    res.header("Access-Control-Allow-Origin", "*"); //核心
+    res.header("Access-Control-Allow-Headers", "X-Requested-With"); //核心
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS"); //核心
+    res.header("X-Powered-By",' 3.2.1') ;
+    res.header("Content-Type", "application/json;charset=utf-8"); next();
+});
+app.get('/auth/:id/:password', function(req, res) { 
+    res.send({
+        id:req.params.id, 
+        name: req.params.password
+    });
+});
+app.listen(3000);console.log('Listening on port 3000...');
+```
+还可以参考这个模块：[cors](https://github.com/expressjs/cors)
+参考：[推酷](http://www.tuicool.com/articles/vYBR3y)
+
+# Q10：ES6新特性：
+# ANSWER:
+这个写的很不错，推荐阅读
+[阮一峰的日志](http://es6.ruanyifeng.com/#docs/let)
