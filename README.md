@@ -16,19 +16,20 @@
 
 ## Q2017-2：Redis常用命令
 ## ANSWER：
-### 1.keys * 查看所有key
-### 2.set key value 设置key的值，若存在则覆盖
-### 3.setnx key value :set if not exists,若存在则不操作
-### 4.MSET key1 value1 key2 value2...设置一组key-value
-### 5.get key 获取key对应的值
-### 6.incr key 自增+1;decr key 自减-1
-### 7.expire key seconds 设置缓存存在时间，过时间删除变量
-### 8.hset key "name" "kevin" 设置对象属性值
-### 9.hget key "name" 获取对象属性值
+1. keys * 查看所有key
+2. set key value 设置key的值，若存在则覆盖
+3. setnx key value :set if not exists,若存在则不操作
+4. MSET key1 value1 key2 value2...设置一组key-value
+5. get key 获取key对应的值
+6. incr key 自增+1;decr key 自减-1
+7. expire key seconds 设置缓存存在时间，过时间删除变量
+8. hset key "name" "kevin" 设置对象属性值
+9. hget key "name" 获取对象属性值
 
-参考：1.[redis命令行文档](http://doc.redisfans.com/)
-     2.[redis官网](https://redis.io/)
-     3.[redis学习博客](http://www.cnblogs.com/woshimrf/p/5198361.html)
+### 参考：
+1. [redis命令行文档](http://doc.redisfans.com/)
+2. [redis官网](https://redis.io/)
+3. [redis学习博客](http://www.cnblogs.com/woshimrf/p/5198361.html)
 
 ## Q2017-3: js实现青蛙跳台阶算法，青蛙可以跳1阶或2阶，跳到N层有多少种跳法?
 ## ANSWER:
@@ -179,8 +180,8 @@ delete x; //语法错误
 
 V8使用是垃圾回收器（GC）进行回收，
 具体信息可以参考下列文章：
-1.[阿里云团队博客](http://alinode.aliyun.com/blog/14)
-2.[Segmentfault](http://segmentfault.com/a/1190000000440270)
+1. [阿里云团队博客](http://alinode.aliyun.com/blog/14)
+2. [Segmentfault](http://segmentfault.com/a/1190000000440270)
 
 ***
 
@@ -229,17 +230,17 @@ require("http").createServer(function(req, res){
 将图片等数据放在CDN缓存，可以大大减轻自己服务器压力，可以参考这个模块[express-cdn](https://github.com/niftylettuce/express-cdn)
 
 参考资料：
-[Web开发后端缓存思路](https://cnodejs.org/topic/55210d88c4f5240812f55408)
-[Etag缓存](http://www.cnblogs.com/hustskyking/p/etag-in-node.html)
-[缓存策略](http://imweb.io/topic/55c6f9bac222e3af6ce235b9)
+1. [Web开发后端缓存思路](https://cnodejs.org/topic/55210d88c4f5240812f55408)
+2. [Etag缓存](http://www.cnblogs.com/hustskyking/p/etag-in-node.html)
+3. [缓存策略](http://imweb.io/topic/55c6f9bac222e3af6ce235b9)
 
 ***
 
 ## Q5：TCP与UDP的区别？
 ## A：
-1.TCP是面向链接的，虽然说网络的不安全不稳定特性决定了多少次握手都不能保证连接的可靠性，但TCP的三次握手在最低限度上(实际上也很大程度上保证了)保证了连接的可靠性;
+1. TCP是面向链接的，虽然说网络的不安全不稳定特性决定了多少次握手都不能保证连接的可靠性，但TCP的三次握手在最低限度上(实际上也很大程度上保证了)保证了连接的可靠性;
 　　而UDP不是面向连接的，UDP传送数据前并不与对方建立连接，对接收到的数据也不发送确认信号，发送端不知道数据是否会正确接收，当然也不用重发，所以说UDP是无连接的、不可靠的一种数据传输协议。
-2.也正由于1所说的特点，使得UDP的开销更小数据传输速率更高，因为不必进行收发数据的确认，所以UDP的实时性更好。
+2. 也正由于1所说的特点，使得UDP的开销更小数据传输速率更高，因为不必进行收发数据的确认，所以UDP的实时性更好。
 
 ## Q6：为什么选择mocha这种测试框架？
 ## ANSWER:
@@ -248,8 +249,8 @@ require("http").createServer(function(req, res){
 - 异步方法测试简单
 - 支持before,after等hook
 
-[mocha git](https://github.com/mochajs/mocha)
-[mocha测试](http://taobaofed.org/blog/2015/12/10/nodejs-unit-tests/)
+1. [mocha git](https://github.com/mochajs/mocha)
+2. [mocha测试](http://taobaofed.org/blog/2015/12/10/nodejs-unit-tests/)
 
 ## Q7：TDD/BDD分别是什么？
 ## ANSWER：
