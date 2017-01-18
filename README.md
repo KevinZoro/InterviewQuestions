@@ -38,14 +38,60 @@
     'use strict';//使用严格模式
     function Step(FloorN){
         let N = Number(FloorN);
+        if(N<=0){
+            console.error("INPUT UNEXPECTED!");
+            return 0;
+        }
         if(!N) return 0;
-        if(N==1) return 1;
-        else if(N==2) return 2;
+        if(N<=2) return N;
         return Step(N-1)+Step(N-2);
     }
 
 ```
-`
+上述递归的方法效率很低，时间复杂度为O(2^N),会有很多重复计算,下面使用非递归方法重构
+
+//非递归
+
+```javascript
+    'use strict';
+    function Step2(FloorN){
+        let array = [];
+        let N = Number(FloorN);
+        if(N<=0){
+            console.error("INPUT UNEXPECTED!");
+            return 0;
+        }
+        if(N<=2) return N;
+        array[0]=1;
+        array[1]=2;
+        for(let i=2;i<N;i++){
+            array[i]=array[i-1]+array[i-2];
+        }
+        return array[N-1];
+    }
+
+    //不使用数组
+    function Step3(FloorN){
+        let N = Number(FloorN);
+        if(N<=0){
+            console.error("INPUT UNEXPECTED!");
+            return 0;
+        }
+        if(N<=2) return N;
+        let first=1;
+        let second=2;
+        let fn=0;
+        for(let i=2;i<N;i++){
+            fn=first+second;
+            first=second;
+            second=fn;
+        }
+        return fn;
+    }
+```
+
+具体代码在src/frog.js中,并有在我机器上测试的效率对比
+
 ######----------------------------我是分割线-------------------------------
 #2016更新
 some questions and answers
