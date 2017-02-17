@@ -1,6 +1,107 @@
 # InterviewQuestions
 #2017更新
-## Q2017-1:MySql的数据库引擎分哪几种，区别是什么?
+
+## Q2017-8:
+如何判断一个函数 是Promise?
+```
+    function isPromise(value){
+        return value instanceof Promise;
+    }
+```
+
+## Q2017-7:
+实现一个函数可以对不确定参数个数的情况下对参数求和
+len=0;//0
+len=1;//arguments[0];
+```
+    function sum(){
+        var len =arguments.length;
+        if(len===0) return 0;
+        else{
+            let result=0;
+            for(let i=0;i<len;i++){
+                result+=arguments[i];
+            }
+            return result;
+        }
+    }
+```
+利用sum函数实现自增函数
+```
+    var addOne=sum.bind(null,1);
+    console.log(sum());//1
+    console.log(sum(1));//2
+```
+bind()会继承sum的属性并生成一个新的函数,可以给新的函数添加参数
+
+## Q2017-6:
+```
+    tick(); //1;
+    tick(); //2;
+    tick(); //3;
+    ...
+    ...
+    不使用全局变量实现这种自增
+```
+```
+    function tick(){
+        var num=0;
+        return function(){
+            return num++;
+        }
+    }
+
+    var children = tick();
+    tick();
+    tick();
+```
+
+
+## Q2017-5:
+```
+    function a(){
+        for(var i=0;i<10;i++){
+            setTimeout(()=>{
+                console.log(i);
+            },i*1000)
+        }
+    }
+```
+很经典的闭包问题吧，因为setTimeout延迟执行，此时的i已经循环完毕，变成了9;
+所以打印出来的都是9;
+如果想顺序打印出来，有两种方法:
+1. 使用let代替var 即```for(let i=0;i<10;i++)```因为let会绑定作用域；
+2. 使用闭包 即
+```
+    for(var i=0;i<10;i++){
+        setTimeout(()=>{
+            return ()=>{
+                console.log(i);
+            }
+        },i*1000);
+    }
+```
+## Q2017-4:
+```
+    var x='abc';
+    function abc(){
+        var y=x;
+        var x='def';
+        console.log(y);//undefined
+    }
+```
+理解函数生成的时候会在函数内第一行先声明所有的局部变量，即
+```
+    function abc(){
+        var x;
+        var y;
+        y=x;
+        x='def';
+        console.log(y);//undefined
+    }
+```
+
+## Q2017-3:MySql的数据库引擎分哪几种，区别是什么?
 ## ANSWER:
 ### 1.Innodb引擎
 提供对事务的支持，提供了行级锁和外键约束，不支持全文TEXT字段的索引，没有保存表的行数
@@ -31,7 +132,7 @@
 2. [redis官网](https://redis.io/)
 3. [redis学习博客](http://www.cnblogs.com/woshimrf/p/5198361.html)
 
-## Q2017-3: js实现青蛙跳台阶算法，青蛙可以跳1阶或2阶，跳到N层有多少种跳法?
+## Q2017-1: js实现青蛙跳台阶算法，青蛙可以跳1阶或2阶，跳到N层有多少种跳法?
 ## ANSWER:
 其实考的是斐波那契数列算法，结果如下:
 ```javascript
@@ -91,6 +192,7 @@
 ```
 
 具体代码在src/frog.js中,并有在我机器上测试的效率对比
+
 
 ######----------------------------我是分割线-------------------------------
 #2016更新
